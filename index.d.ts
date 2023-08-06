@@ -4,7 +4,7 @@
  * There are all non token types that are used for token generation.
  */
 
-declare type BorderStyle =
+export type BorderStyle =
   | "solid"
   | "dashed"
   | "dotted"
@@ -14,9 +14,9 @@ declare type BorderStyle =
   | "outset"
   | "inset";
 
-declare type TokenDescriptionType = string;
+export type TokenDescriptionType = string;
 
-declare type TokenType =
+export type TokenType =
   // simple token types
   | "color"
   | "dimension"
@@ -46,11 +46,11 @@ declare type TokenType =
   | "array"
   | "null";
 
-declare type DimensionStringType = string | number;
+export type DimensionStringType = string | number;
 
-declare type DurationStringType = string;
+export type DurationStringType = string;
 
-declare type GradientTokenType = "linear" | "radial" | "angular" | "conic";
+export type GradientTokenType = "linear" | "radial" | "angular" | "conic";
 
 /**
  * TOKEN TYPES
@@ -58,7 +58,7 @@ declare type GradientTokenType = "linear" | "radial" | "angular" | "conic";
  * There are all simple token types.
  */
 
-declare interface GenericTokenI {
+export interface GenericTokenI {
   $type: TokenType;
   $value: any;
   $description?: string;
@@ -69,7 +69,7 @@ declare interface GenericTokenI {
  * Documentation: https://design-tokens.github.io/community-group/format/#color
  */
 
-declare interface ColorTokenI extends GenericTokenI {
+export interface ColorTokenI extends GenericTokenI {
   $type: "color";
   $value: string | object;
 }
@@ -78,7 +78,7 @@ declare interface ColorTokenI extends GenericTokenI {
  * Documentation: https://design-tokens.github.io/community-group/format/#dimension
  */
 
-declare interface DimensionTokenI extends GenericTokenI {
+export interface DimensionTokenI extends GenericTokenI {
   $type: "dimension";
   $value: DimensionStringType;
 }
@@ -87,7 +87,7 @@ declare interface DimensionTokenI extends GenericTokenI {
  * Documentation: https://design-tokens.github.io/community-group/format/#font-family
  */
 
-declare interface FontFamilyTokenI extends GenericTokenI {
+export interface FontFamilyTokenI extends GenericTokenI {
   $type: "fontFamily";
   $value: string | string[]; // Single font name or array of font names
 }
@@ -96,7 +96,7 @@ declare interface FontFamilyTokenI extends GenericTokenI {
  * Documentation: https://design-tokens.github.io/community-group/format/#font-weight
  */
 
-declare interface FontWeightTokenI extends GenericTokenI {
+export interface FontWeightTokenI extends GenericTokenI {
   $type: "fontWeight";
   $value:
     | number
@@ -124,7 +124,7 @@ declare interface FontWeightTokenI extends GenericTokenI {
  * Part of the composite token: https://design-tokens.github.io/community-group/format/#typography
  */
 
-declare interface FontSizeTokenI extends GenericTokenI {
+export interface FontSizeTokenI extends GenericTokenI {
   $type: "fontSize";
   $value: DimensionStringType;
 }
@@ -133,7 +133,7 @@ declare interface FontSizeTokenI extends GenericTokenI {
  * Part of the composite token: https://design-tokens.github.io/community-group/format/#typography
  */
 
-declare interface LineHeightTokenI extends GenericTokenI {
+export interface LineHeightTokenI extends GenericTokenI {
   $type: "lineHeight";
   $value: DimensionStringType;
 }
@@ -142,7 +142,7 @@ declare interface LineHeightTokenI extends GenericTokenI {
  * Part of the composite token: https://design-tokens.github.io/community-group/format/#typography
  */
 
-declare interface LetterSpacingTokenI extends GenericTokenI {
+export interface LetterSpacingTokenI extends GenericTokenI {
   $type: "letterSpacing";
   $value: DimensionStringType;
 }
@@ -151,7 +151,7 @@ declare interface LetterSpacingTokenI extends GenericTokenI {
  * Documentation: https://design-tokens.github.io/community-group/format/#duration
  */
 
-declare interface DurationTokenI extends GenericTokenI {
+export interface DurationTokenI extends GenericTokenI {
   $type: "duration";
   $value: DurationStringType; // Number followed by "ms" unit
 }
@@ -160,7 +160,7 @@ declare interface DurationTokenI extends GenericTokenI {
  * Documentation: https://design-tokens.github.io/community-group/format/#cubic-bezier
  */
 
-declare interface CubicBezierTokenI extends GenericTokenI {
+export interface CubicBezierTokenI extends GenericTokenI {
   $type: "cubicBezier";
   $value: [number, number, number, number]; // Array containing four numbers
 }
@@ -169,7 +169,7 @@ declare interface CubicBezierTokenI extends GenericTokenI {
  * Documentation: https://design-tokens.github.io/community-group/format/#number
  */
 
-declare interface NumberTokenI extends GenericTokenI {
+export interface NumberTokenI extends GenericTokenI {
   $type: "number";
   $value: number;
 }
@@ -184,7 +184,7 @@ declare interface NumberTokenI extends GenericTokenI {
  * Documentation: https://design-tokens.github.io/community-group/format/#stroke-style
  */
 
-declare interface StrokeStyleTokenI extends GenericTokenI {
+export interface StrokeStyleTokenI extends GenericTokenI {
   $type: "strokeStyle";
   $value:
     | BorderStyle
@@ -201,7 +201,7 @@ declare interface StrokeStyleTokenI extends GenericTokenI {
  * Documentation: https://design-tokens.github.io/community-group/format/#border
  */
 
-declare interface BorderTokenI extends GenericTokenI {
+export interface BorderTokenI extends GenericTokenI {
   $type: "border";
   $value: {
     color: string;
@@ -214,7 +214,7 @@ declare interface BorderTokenI extends GenericTokenI {
  * Documentation: https://design-tokens.github.io/community-group/format/#transition
  */
 
-declare interface TransitionTokenI extends GenericTokenI {
+export interface TransitionTokenI extends GenericTokenI {
   $type: "transition";
   $value: {
     duration: DurationTokenI | string;
@@ -227,18 +227,18 @@ declare interface TransitionTokenI extends GenericTokenI {
  * Documentation: https://design-tokens.github.io/community-group/format/#gradient
  */
 
-declare interface GradientTokenStopI {
+export interface GradientTokenStopI {
   color: ColorTokenI | string;
   position: string;
 }
 
-declare interface GradientTokenValueI {
+export interface GradientTokenValueI {
   type: GradientTokenType;
   angle: string;
   stops: GradientTokenStopI[];
 }
 
-declare interface GradientTokenI extends GenericTokenI {
+export interface GradientTokenI extends GenericTokenI {
   $type: "gradient";
   $value: GradientTokenValueI;
 }
@@ -248,7 +248,7 @@ declare interface GradientTokenI extends GenericTokenI {
  * Issue: https://github.com/design-tokens/community-group/issues/100
  */
 
-declare interface ShadowTokenI extends GenericTokenI {
+export interface ShadowTokenI extends GenericTokenI {
   $type: "shadow";
   $value: {
     inset: boolean; // is still in discussion
@@ -264,7 +264,7 @@ declare interface ShadowTokenI extends GenericTokenI {
  * Documentation: https://design-tokens.github.io/community-group/format/#typography
  */
 
-declare interface TypographyTokenI extends GenericTokenI {
+export interface TypographyTokenI extends GenericTokenI {
   $type: "typography";
   $value: {
     fontFamily: FontFamilyTokenI | string;
@@ -286,7 +286,7 @@ declare interface TypographyTokenI extends GenericTokenI {
  * issue: https://github.com/design-tokens/community-group/issues/214
  */
 
-declare interface AliasTokenI extends GenericTokenI {
+export interface AliasTokenI extends GenericTokenI {
   $type: "alias";
   $value: `{\${string}}`; // Name of the token to alias
 }
@@ -295,7 +295,7 @@ declare interface AliasTokenI extends GenericTokenI {
  * Grid token propoasal
  */
 
-declare interface GridTokenI extends GenericTokenI {
+export interface GridTokenI extends GenericTokenI {
   $type: "grid";
   $value: {
     columnCount?: number;
@@ -313,12 +313,10 @@ declare interface GridTokenI extends GenericTokenI {
  * Blur token propoasal
  */
 
-declare interface BlurTokenI extends GenericTokenI {
+export interface BlurTokenI extends GenericTokenI {
   $type: "blur";
   $value: {
     role: "layer" | "background";
     blur: DimensionStringType;
   };
 }
-
-export {};
