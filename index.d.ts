@@ -184,59 +184,65 @@ export interface NumberTokenI extends GenericTokenI {
  * Documentation: https://design-tokens.github.io/community-group/format/#stroke-style
  */
 
+export type StrokeStyleTokenValueType =
+  | BorderStyle
+  | {
+      dashArray: (string | number)[];
+      lineCap: "round" | "butt" | "square";
+      lineJoin: "round" | "bevel" | "miter";
+      miterLimit: number;
+      dashOffset: number;
+    };
+
 export interface StrokeStyleTokenI extends GenericTokenI {
   $type: "strokeStyle";
-  $value:
-    | BorderStyle
-    | {
-        dashArray: (string | number)[];
-        lineCap: "round" | "butt" | "square";
-        lineJoin: "round" | "bevel" | "miter";
-        miterLimit: number;
-        dashOffset: number;
-      };
+  $value: StrokeStyleTokenValueType;
 }
 
 /**
  * Documentation: https://design-tokens.github.io/community-group/format/#border
  */
 
+export type BorderTokenValueType = {
+  color: string;
+  width: string;
+  style: StrokeStyleTokenI;
+};
+
 export interface BorderTokenI extends GenericTokenI {
   $type: "border";
-  $value: {
-    color: string;
-    width: string;
-    style: StrokeStyleTokenI;
-  };
+  $value: BorderTokenValueType;
 }
 
 /**
  * Documentation: https://design-tokens.github.io/community-group/format/#transition
  */
 
+export type TransitionTokenValueType = {
+  duration: DurationTokenI | string;
+  delay: DurationTokenI | string;
+  timingFunction: CubicBezierTokenI | string;
+};
+
 export interface TransitionTokenI extends GenericTokenI {
   $type: "transition";
-  $value: {
-    duration: DurationTokenI | string;
-    delay: DurationTokenI | string;
-    timingFunction: CubicBezierTokenI | string;
-  };
+  $value: TransitionTokenValueType;
 }
 
 /**
  * Documentation: https://design-tokens.github.io/community-group/format/#gradient
  */
 
-export interface GradientTokenStopI {
+export type GradientTokenStopI = {
   color: ColorTokenI | string;
   position: string;
-}
+};
 
-export interface GradientTokenValueI {
+export type GradientTokenValueI = {
   type: GradientTokenType;
   angle: string;
   stops: GradientTokenStopI[];
-}
+};
 
 export interface GradientTokenI extends GenericTokenI {
   $type: "gradient";
@@ -248,31 +254,35 @@ export interface GradientTokenI extends GenericTokenI {
  * Issue: https://github.com/design-tokens/community-group/issues/100
  */
 
+export type ShadowTokenValueType = {
+  inset: boolean; // is still in discussion
+  color: ColorTokenI | string;
+  offsetX: DimensionTokenI | string;
+  offsetY: DimensionTokenI | string;
+  blur: DimensionTokenI | string;
+  spread: DimensionTokenI | string;
+};
+
 export interface ShadowTokenI extends GenericTokenI {
   $type: "shadow";
-  $value: {
-    inset: boolean; // is still in discussion
-    color: ColorTokenI | string;
-    offsetX: DimensionTokenI | string;
-    offsetY: DimensionTokenI | string;
-    blur: DimensionTokenI | string;
-    spread: DimensionTokenI | string;
-  };
+  $value: ShadowTokenValueType;
 }
 
 /**
  * Documentation: https://design-tokens.github.io/community-group/format/#typography
  */
 
+export type TypographyTokenValueType = {
+  fontFamily: FontFamilyTokenI | string;
+  fontSize: FontSizeTokenI | string;
+  lineHeight: LineHeightTokenI | DimensionStringType;
+  letterSpacing: LetterSpacingTokenI | DimensionStringType;
+  fontWeight: FontWeightTokenI | DimensionStringType;
+};
+
 export interface TypographyTokenI extends GenericTokenI {
   $type: "typography";
-  $value: {
-    fontFamily: FontFamilyTokenI | string;
-    fontSize: FontSizeTokenI | string;
-    lineHeight: LineHeightTokenI | DimensionStringType;
-    letterSpacing: LetterSpacingTokenI | DimensionStringType;
-    fontWeight: FontWeightTokenI | DimensionStringType;
-  };
+  $value: TypographyTokenValueType;
 }
 
 /**
@@ -295,28 +305,32 @@ export interface AliasTokenI extends GenericTokenI {
  * Grid token propoasal
  */
 
+export type GridTokenValueType = {
+  columnCount?: number;
+  columnGap?: DimensionStringType;
+  columnWidth?: DimensionStringType;
+  columnMargin?: DimensionStringType;
+  rowCount?: number;
+  rowGap?: DimensionStringType;
+  rowHeight?: DimensionStringType;
+  rowMargin?: DimensionStringType;
+};
+
 export interface GridTokenI extends GenericTokenI {
   $type: "grid";
-  $value: {
-    columnCount?: number;
-    columnGap?: DimensionStringType;
-    columnWidth?: DimensionStringType;
-    columnMargin?: DimensionStringType;
-    rowCount?: number;
-    rowGap?: DimensionStringType;
-    rowHeight?: DimensionStringType;
-    rowMargin?: DimensionStringType;
-  };
+  $value: GridTokenValueType;
 }
 
 /**
  * Blur token propoasal
  */
 
+export type BlurTokenValueType = {
+  role: "layer" | "background";
+  blur: DimensionStringType;
+};
+
 export interface BlurTokenI extends GenericTokenI {
   $type: "blur";
-  $value: {
-    role: "layer" | "background";
-    blur: DimensionStringType;
-  };
+  $value: BlurTokenValueType;
 }
