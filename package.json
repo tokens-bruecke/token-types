@@ -1,16 +1,28 @@
 {
   "name": "@tokens-bruecke/tokens-types",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "Typings for the Figma Plugin API",
   "main": "",
-  "types": "index.d.ts",
   "scripts": {
+    "prettier": "npm run prettier-path -- '**/*.{ts,js}'",
+    "prettier:check": "npm run prettier-path:check -- '**/*.{ts,js}'",
+    "prettier-path": "prettier --write",
+    "prettier-path:check": "prettier --check",
     "test": "tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tokens-bruecke/tokens-types"
+  },
+  "keywords": [
+    "figma",
+    "plugin",
+    "typings"
+  ],
+  "author": "Figma",
+  "license": "MIT License",
+  "homepage": "https://github.com/tokens-bruecke/tokens-types#readme",
   "devDependencies": {
-    "typescript": "^5.1.6"
+    "prettier": "^2.6.1"
   }
 }
