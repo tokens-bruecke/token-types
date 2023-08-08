@@ -5,11 +5,11 @@ This repo contains types for DTCG tokens and tokens for the [TokensBrücke](http
 ## Installation
 
 ```bash
-yarn add git+https://github.com/tokens-bruecke/tokens-types.git
+yarn add git+https://github.com/tokens-bruecke/tokens-types.git -D
 ```
 
 or with a specific version:
 
 ```bash
-yarn add git+https://github.com/tokens-bruecke/tokens-types.git#package-tag
+yarn add git+https://github.com/tokens-bruecke/tokens-types.git#package-tag -D
 ```
